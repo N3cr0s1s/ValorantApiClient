@@ -5,29 +5,41 @@ namespace ValorantClient.Cli.Actions
     public class ConsoleAction
     {
 
-        private const int _halfer = 5;
-        private (int List, int Option) _selected = (0,2);
+        public int Halfer { get; set; } = 5;
+        private (int List, int Option) _selected = (0,0);
         private readonly string _prompt;
         private readonly List<string[]> _options;
         private (int Left, int Top) _cursor;
+        private IDictionary<string, Func<Task>> _actions;
 
         public ConsoleColor SelectedColor { get; set; } = ConsoleColor.Red;
 
-        public ConsoleAction(string prompt, string[] options)
+        public ConsoleAction(string prompt, string[] options,int halfer = 5)
         {
+            Halfer = halfer;
             _prompt = prompt;
-            _options = SplitArray(options, _halfer);
+            _options = SplitArray(options, Halfer);
         }
 
-        public ConsoleAction(string prompt, Dictionary<string, string>.KeyCollection keys)
+        public ConsoleAction(string prompt, IDictionary<string, Func<Task>> options,int halfer = 5)
         {
+            Halfer = halfer;
             _prompt = prompt;
-            _options = SplitArray(keys.ToArray(),_halfer);
+            _options = SplitArray(options.Keys.ToArray(), Halfer);
+            _actions = options;
         }
 
-        public List<string[]> SplitArray(string[] inputArray, int size)
+        public ConsoleAction(string prompt, Dictionary<string, string>.KeyCollection keys,int halfer = 5)
         {
-            List<string[]> result = new List<string[]>();
+            Halfer = halfer;
+            _prompt = prompt;
+            _options = SplitArray(keys.ToArray(), Halfer);
+
+        }
+
+        public List<T[]> SplitArray<T>(T[] inputArray, int size)
+        {
+            List<T[]> result = new List<T[]>();
 
             int length = inputArray.Length;
             int numOfArrays = length / size;
@@ -47,7 +59,7 @@ namespace ValorantClient.Cli.Actions
                     end = length;
                 }
 
-                string[] subArray = new string[size];
+                T[] subArray = new T[size];
 
                 for (int j = start; j < end; j++)
                 {
@@ -64,11 +76,17 @@ namespace ValorantClient.Cli.Actions
 
             return result;
         }
-        public string ReadValue()
+        public async Task<string> ReadValueAsync()
         {
             Console.WriteLine(_prompt);
             _cursor = Console.GetCursorPosition();
-            return WaitForValue();
+            string result =  WaitForValue();
+            if (_actions is not null)
+            {
+                Func<Task> task = _actions[result];
+                await task();
+            }
+            return result;
         }
 
         private string WaitForValue()
@@ -116,8 +134,7 @@ namespace ValorantClient.Cli.Actions
 
         private void DrawOptions()
         {
-            Console.SetCursorPosition(_cursor.Left, _cursor.Top);
-
+            Console.SetCursorPosition(0, _cursor.Top);
             for (int i = 0; i < _options[0].Length; i++)
             {
                 for (int j = 0; j < _options.Count; j++)
@@ -134,6 +151,8 @@ namespace ValorantClient.Cli.Actions
                 }
                 Console.WriteLine();
             }
+
+            _cursor.Top = Console.GetCursorPosition().Top - Halfer;
         }
     }
 }

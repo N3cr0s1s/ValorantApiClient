@@ -7,7 +7,7 @@ using ValorantClient.Lib.Logging;
 
 namespace ValorantClient.Lib.API.Chat
 {
-    public class ChatHandler : IRequestHandler<ChatQuery, RestResponse>
+    public class ChatHandler : IRequestHandler<ChatQuery, ChatResponse>
     {
         private readonly ILogger<ChatHandler> _logger;
         private readonly IMediator _mediator;
@@ -24,7 +24,7 @@ namespace ValorantClient.Lib.API.Chat
             _cache = cache;
         }
 
-        public async Task<RestResponse> Handle(ChatQuery request, CancellationToken cancellationToken)
+        public async Task<ChatResponse> Handle(ChatQuery request, CancellationToken cancellationToken)
         {
             var resp = await _mediator.Send(new FetchCommand
             {
@@ -36,7 +36,7 @@ namespace ValorantClient.Lib.API.Chat
             await _cache.SetValueAsync(CacheValues.GameTag, chatResponse.Tag);
             await _cache.SetValueAsync(CacheValues.Username, chatResponse.Username);
             await _cache.SetValueAsync(CacheValues.ChatResponse, chatResponse);
-            return resp;
+            return chatResponse;
         }
     }
 }

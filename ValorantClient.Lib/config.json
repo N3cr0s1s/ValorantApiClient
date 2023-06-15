@@ -34,7 +34,8 @@
     "path": "env(LOCALAPPDATA)\\Riot Games\\Riot Client\\Config\\lockfile"
   },
   "endpoints": {
-    "entitlements": "{baseEndpointLocal}/entitlements/v1/token"
+    "entitlements": "{baseEndpointLocal}/entitlements/v1/token",
+    "authorization": "https://auth.riotgames.com/api/v1/authorization",
   },
   "agents": {
     "Gekko": "e370fa57-4757-3604-3648-499e1f642d3f",

@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace ValorantClient.Lib.API.Chat
 {
-    public class ChatQuery : IRequest<RestResponse>
+    public class ChatQuery : IRequest<ChatResponse>
     {
     }
 }

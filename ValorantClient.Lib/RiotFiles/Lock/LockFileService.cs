@@ -72,6 +72,7 @@ namespace ValorantClient.Lib.RiotFiles.Lock
             if (!File.Exists(path))
             {
                 _logger.LogError("Lock file not exist with this path: " + path);
+                _logger.LogError("To fix this, start the game, or login with username:password! Hint: Use HeaderQuery(username,password)");
                 //  Try this path: Env('LOCALAPPDATA')\Riot Games\Riot Client\Config\lockfile
                 throw new LockFileException($"LockFile not exist with this path. Path: {path}");
             }

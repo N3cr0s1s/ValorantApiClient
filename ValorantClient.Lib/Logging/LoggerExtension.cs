@@ -37,7 +37,7 @@ namespace ValorantClient.Lib.Logging
             if (options.Disable)
                 return services;
 
-            services.AddTransient(typeof(ILogger<>), typeof(ConsoleLogger<>));
+            services.AddTransient(typeof(ILogger<>), options.Logger);
             return services;
         }
     }
