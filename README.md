@@ -6,7 +6,7 @@ You can easily update it by editing the config.json file.
 
 ##  Cigger
 
-![image](media/60231561-f62ffda9-d08b-48c2-a78b-451a65e19248.png)
+![image](./media/246370479-f62ffda9-d08b-48c2-a78b-451a65e19248.png?raw=true)
 
 You can navigate with arrows, and select with Enter.
 Probably detected, but I don't know any person who get ban for this.
@@ -15,7 +15,7 @@ Probably detected, but I don't know any person who get ban for this.
 
 Lock your agent instantly, use this after "Match found" sound.
 
-![image](media/60231561-eb15fbe6-1faa-43b4-8a4b-38da014225a3.png)
+![image](media/246370845-eb15fbe6-1faa-43b4-8a4b-38da014225a3.png?raw=true)
 
 ###  Dodge queue
 
@@ -25,7 +25,7 @@ You can use this if you haven't chosen an agent yet.
 
 Read logs, exit with any key
 
-![image](media/60231561-b22ebdf6-f7cd-4f2a-860f-7ce14ed0373c)
+![image](media/246371855-b22ebdf6-f7cd-4f2a-860f-7ce14ed0373c.png?raw=true)
 
 ##  Lib
 
