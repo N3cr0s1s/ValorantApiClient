@@ -37,6 +37,9 @@ namespace ValorantClient.Lib.API.Version
             _logger.LogDebug("Request sent");
             string version = $"{response.Data.Branch}-shipping-{response.Data.BuildVersion}-{response.Data.Version.Split('.')[3]}";
             _logger.LogDebug("Formatted version: " + version);
+
+            await _cache.SetValueAsync(CacheValues.ShippingVersion.ToString(), version);
+
             return version;
         }
     }
