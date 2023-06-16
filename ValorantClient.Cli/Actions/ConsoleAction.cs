@@ -37,7 +37,14 @@ namespace ValorantClient.Cli.Actions
 
         }
 
-        public List<T[]> SplitArray<T>(T[] inputArray, int size)
+        /// <summary>
+        /// Split array, to separate into columns
+        /// </summary>
+        /// <typeparam name="T">Array type</typeparam>
+        /// <param name="inputArray">Array to split</param>
+        /// <param name="size">Column size</param>
+        /// <returns><see cref="List{T}"/> of new <param name="size">size</param> arrays</returns>
+        private List<T[]> SplitArray<T>(T[] inputArray, int size)
         {
             List<T[]> result = new List<T[]>();
 
@@ -76,6 +83,12 @@ namespace ValorantClient.Cli.Actions
 
             return result;
         }
+
+        /// <summary>
+        /// Read input to execute an option.
+        /// If option don't have action, then return with the option name.
+        /// </summary>
+        /// <returns>Option name</returns>
         public async Task<string> ReadValueAsync()
         {
             Console.WriteLine(_prompt);
@@ -89,6 +102,12 @@ namespace ValorantClient.Cli.Actions
             return result;
         }
 
+        /// <summary>
+        /// This method starts a while cycle,
+        /// while <see cref="ConsoleKey.Enter"/> not pressed.
+        /// This method responsible for controls as well.
+        /// </summary>
+        /// <returns>Selected option key</returns>
         private string WaitForValue()
         {
             while (true)
@@ -111,7 +130,7 @@ namespace ValorantClient.Cli.Actions
                         MoveOption(1, 0);
                         break;
                     case ConsoleKey.Enter:
-                        if (!string.IsNullOrEmpty(_options[_selected.List][_selected.Option])) // Ellenőrzi, hogy az opció nem üres
+                        if (!string.IsNullOrEmpty(_options[_selected.List][_selected.Option]))
                         {
                             return _options[_selected.List][_selected.Option];
                         }
@@ -120,6 +139,11 @@ namespace ValorantClient.Cli.Actions
             }
         }
 
+        /// <summary>
+        /// Move selection relatively
+        /// </summary>
+        /// <param name="rowChange">Row change</param>
+        /// <param name="colChange">Column change</param>
         private void MoveOption(int rowChange, int colChange)
         {
             int newRow = _selected.List + rowChange;
@@ -132,6 +156,9 @@ namespace ValorantClient.Cli.Actions
             }
         }
 
+        /// <summary>
+        /// Draw options to console
+        /// </summary>
         private void DrawOptions()
         {
             Console.SetCursorPosition(0, _cursor.Top);

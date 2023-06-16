@@ -2,6 +2,11 @@
 
 namespace ValorantClient.Cli.Logging
 {
+    /// <summary>
+    /// Warning: !! Lazy solution to an easy problem :p !!
+    /// 
+    /// Store logs in memory
+    /// </summary>
     public static class Memory
     {
         public static List<string> All { get; } = new();

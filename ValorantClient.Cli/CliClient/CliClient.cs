@@ -28,6 +28,9 @@ namespace ValorantClient.Cli.CliClient
             _graphics = new TextGraphics();
         }
 
+        /// <summary>
+        /// Start CLI client asnyc
+        /// </summary>
         public async Task StartAsync()
         {
             CreateConsole();
@@ -60,6 +63,10 @@ namespace ValorantClient.Cli.CliClient
             return;
         }
 
+        /// <summary>
+        /// Initialize <see cref="ConsoleAction"/>
+        /// </summary>
+        /// <returns><see cref="ConsoleAction"/></returns>
         private async Task<ConsoleAction> BuildCommandsAsync()
         {
             var agents = await GetAgentsAsync();
@@ -113,17 +120,27 @@ namespace ValorantClient.Cli.CliClient
             return queryAction;
         }
 
+        /// <summary>
+        /// Get all agent for config
+        /// </summary>
+        /// <returns><see cref="Dictionary{TKey, TValue}"/> with agent name and id</returns>
         private async Task<Dictionary<string, string>> GetAgentsAsync()
         {
             return await _configuration.ParseAsync<Dictionary<string, string>>("agents");
         }
 
+        /// <summary>
+        /// Initialize console buffer
+        /// </summary>
         private void CreateConsole()
         {
             Console.Title = _graphics.Title.Replace("{version}", Version);
             //Console.SetBufferSize(Console.WindowWidth * 2, Console.WindowHeight * 2);
         }
 
+        /// <summary>
+        /// Draw logo
+        /// </summary>
         private async Task DrawLogoAsync()
         {
             Console.Clear();

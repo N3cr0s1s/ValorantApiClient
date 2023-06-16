@@ -1,6 +1,6 @@
 ﻿using ValorantClient.Cli.CliClient;
 
-CliClient cliClient = new CliClient();
+ICliClient cliClient = new CliClient();
 cliClient.Debug = true;
 await cliClient.StartAsync();
 
