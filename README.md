@@ -6,7 +6,7 @@ You can easily update it by editing the config.json file.
 
 ##  Cigger
 
-![image](https://github.com/N3cr0s1s/ValorantApiClient/assets/60231561/f62ffda9-d08b-48c2-a78b-451a65e19248)
+![image](media/60231561-f62ffda9-d08b-48c2-a78b-451a65e19248.png)
 
 You can navigate with arrows, and select with Enter.
 Probably detected, but I don't know any person who get ban for this.
@@ -15,7 +15,7 @@ Probably detected, but I don't know any person who get ban for this.
 
 Lock your agent instantly, use this after "Match found" sound.
 
-![image](https://github.com/N3cr0s1s/ValorantApiClient/assets/60231561/eb15fbe6-1faa-43b4-8a4b-38da014225a3)
+![image](media/60231561-eb15fbe6-1faa-43b4-8a4b-38da014225a3.png)
 
 ###  Dodge queue
 
@@ -25,7 +25,7 @@ You can use this if you haven't chosen an agent yet.
 
 Read logs, exit with any key
 
-![image](https://github.com/N3cr0s1s/ValorantApiClient/assets/60231561/b22ebdf6-f7cd-4f2a-860f-7ce14ed0373c)
+![image](media/60231561-b22ebdf6-f7cd-4f2a-860f-7ce14ed0373c)
 
 ##  Lib
 
